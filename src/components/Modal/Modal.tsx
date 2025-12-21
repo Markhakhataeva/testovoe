@@ -1,8 +1,7 @@
 import React, { FC } from 'react'
 
-export const Modal: FC = () => {
+import { ProductProps } from '../../types/types'
 
-    return (
-        <div></div>
-    )
+export const Modal: FC<ProductProps> = ({ product }) => {
+    return <div></div>
 }

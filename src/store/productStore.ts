@@ -1,4 +1,4 @@
-import { ProductStore } from '../types/types'
+import { Product, ProductStore } from '../types/types'
 import { create } from 'zustand'
 
 const Products = [
@@ -58,7 +58,23 @@ const Products = [
     },
 ]
 
-export const useProductStore = create<ProductStore>(() => ({
+export const useProductStore = create<ProductStore>((set, get) => ({
     products: Products,
+    active: false,
+    searchTerm: '',
+    filteredProducts: Products,
 
+    setProducts: (products: Product[]) => {
+        set({ products, filteredProducts: products })
+    },
+    setActive: (active: any) => {
+        set({ active: active })
+    },
+    setSearchTerm: a => {
+        const { products } = get()
+        const filtered = products.filter(product =>
+            product.title.toLowerCase().includes(a.toLowerCase())
+        )
+        set({ searchTerm: a, filteredProducts: filtered })
+    },
 }))
