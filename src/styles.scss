@@ -73,3 +73,247 @@ body{
   font-size: small;
 }
 
+
+.modal_active{
+  width: 70%;
+  height: 600px;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:white;
+  z-index: 1;
+  border: 1px solid #c5bdbd;
+  border-radius: 25px;
+  box-shadow: 0 3px 8px 4px rgba(135, 127, 127, 0.2);
+}
+
+.modal_block{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  justify-content: space-evenly;
+  >img{
+    width: 450px;
+  }
+  >div>.desc{
+    width:450px;
+    font-size: large;
+    text-space: 2px;
+  }
+  >div>button{
+    text-decoration: none;
+    width: 130px;
+    height: 55px;
+    font-size: 25px;
+    background: linear-gradient(135deg, #2bdf36 0%, #1335dd 100%);
+    color: white;
+    border: none;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 100px 0 0 0; ;
+  }
+}
+
+.head{
+  width: 97%;
+  display: flex;
+  padding: 20px 0 0 20px;
+  justify-content: space-between;
+  >button{
+    text-decoration: none;
+    width: 56px;
+    height: 35px;
+    font-size: 25px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+
+}
+
+.categories{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+@media (max-width: 1536px){
+  .card{
+    >img{
+      width:80%;
+      margin: auto;
+    }
+    >div{
+      margin-left: 10px;
+    }
+  }
+
+  .modal_active{
+    width: 70%;
+    height: 70%;
+  }
+
+  .modal_block{
+    padding: 10px;
+    >img{
+      width: 45%;
+    }
+    >div>.desc{
+      width:400px;
+
+    }
+  }
+
+
+}
+
+@media (max-width: 1250px){
+
+  .card{
+    >img{
+      width:70%;
+      margin: auto;
+    }
+    >div{
+      margin-left: 10px;
+    }
+  }
+
+  .modal_active{
+    width: 50%;
+    height: 75%;
+  }
+
+  .modal_block{
+    padding: 10px;
+    >img{
+      width: 45%;
+    }
+    >div>.desc{
+      width:90%;
+    }
+    >div>button{
+      width: 110px;
+      height: 45px;
+      font-size: 20px;
+      margin: 40px 0 0 0; ;
+    }
+  }
+
+
+}
+
+@media (max-width: 768px){
+  .card{
+    >img{
+      width:70%;
+      margin: auto;
+    }
+    >div>h2{
+      font-size:medium;
+    }
+  }
+
+  .modal_active{
+    width: 60%;
+    height: 65%;
+  }
+
+  .modal_block{
+    padding: 10px;
+    >img{
+      width: 50%;
+    }
+    >div{
+      >.desc{
+        width:90%;
+        font-size: medium;
+      }
+      >button{
+        width: 110px;
+        height: 45px;
+        font-size: 20px;
+        margin: 40px 0 0 0; ;
+      }
+      >h1{
+        font-size:large;
+      }
+    }
+
+
+  }
+
+}
+
+
+
+@media (max-width: 480px){
+  .header{
+    width: 90%;
+    height: 40px;
+    align-items: baseline;
+    text-align: center;
+    >img{
+      margin-left: 5px;
+      width: 15px;
+      height: 15px;
+    }
+    >h1{
+      padding-left: 15px;
+      font-size: medium;
+
+    }
+
+  }
+
+  .search{
+    width: 60%;
+    margin: 15px auto;
+    input{
+      width: 100%;
+      padding: 7px 11px;
+    }
+  }
+  .card{
+    width: 80%;
+    >img{
+      width:70%;
+      margin: auto;
+    }
+    >div>h2{
+      font-size:medium;
+    }
+  }
+
+  .modal_active{
+    width: 90%;
+    height: 65%;
+  }
+
+  .head>button{
+    width: 30px;
+    height: 20px;
+    font-size: medium;
+  }
+  .categories{
+    font-size:large;
+  }
+  .desc{
+    font-size:8px;
+  }
+  .modal_block>div>button{
+    width: 90px;
+    height: 38px;
+    font-size: 16px;
+    margin: 40px 0 0 0; ;
+  }
+}
+
+
+

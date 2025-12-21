@@ -63,6 +63,8 @@ export const useProductStore = create<ProductStore>((set, get) => ({
     active: false,
     searchTerm: '',
     filteredProducts: Products,
+    selected: null,
+    isModalOpen: false,
 
     setProducts: (products: Product[]) => {
         set({ products, filteredProducts: products })
@@ -76,5 +78,12 @@ export const useProductStore = create<ProductStore>((set, get) => ({
             product.title.toLowerCase().includes(a.toLowerCase())
         )
         set({ searchTerm: a, filteredProducts: filtered })
+    },
+    openModal: products => {
+        set({ isModalOpen: true, selected: products })
+    },
+
+    closeModal: () => {
+        set({ isModalOpen: false, selected: null })
     },
 }))

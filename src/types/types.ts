@@ -15,6 +15,10 @@ export interface ProductStore {
     searchTerm: string
     setSearchTerm: (a: string) => void
     filteredProducts: Product[]
+    selected: Product | null
+    isModalOpen: boolean
+    openModal: (products: Product) => void
+    closeModal: () => void
 }
 export interface ProductProps {
     product: {
