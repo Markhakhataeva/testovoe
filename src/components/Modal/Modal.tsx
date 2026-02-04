@@ -1,58 +1,29 @@
-import React, { FC, useEffect, useRef } from 'react'
+import React, { FC } from 'react'
 
-import { useProductStore } from '../../store/productStore'
-import { ProductProps } from '../../types/types'
+import { Product } from '../App'
 
-export const Modal: FC<ProductProps> = ({ product }) => {
-    const { selected, isModalOpen, closeModal } = useProductStore()
-    const modalRef = useRef<HTMLDivElement>(null)
-
-    useEffect(() => {
-        const handleOverlayClick = (e: MouseEvent) => {
-            if (
-                modalRef.current &&
-                !modalRef.current.contains(e.target as Node)
-            ) {
-                closeModal()
-            }
-        }
-
-        const handleEsc = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') {
-                closeModal()
-            }
-        }
-
-        if (isModalOpen) {
-            document.addEventListener('mousedown', handleOverlayClick)
-            document.addEventListener('keydown', handleEsc)
-        }
-
-        return () => {
-            document.removeEventListener('mousedown', handleOverlayClick)
-            document.removeEventListener('keydown', handleEsc)
-        }
-    }, [isModalOpen, closeModal])
-
-    if (!isModalOpen || !selected) return null
-
+interface ModalProps {
+    closeModal: () => void
+    selectedProduct: Product
+}
+export const Modal: FC<ModalProps> = ({ closeModal, selectedProduct }) => {
     return (
-        <div>
-            <div className='modal_active' ref={modalRef}>
-                <div className='head'>
-                    <div className='categories'>{selected.category}</div>
-                    <button onClick={closeModal}>x</button>
-                </div>
-
-                <hr />
-                <div className='modal_block'>
-                    <img src={selected.image} alt='' />
-                    <div>
-                        <h1>{selected.title}</h1>
-                        <h2>{selected.price}$</h2>
-                        <div className='desc'>{selected.description}</div>
-                        <button>Купить</button>
-                    </div>
+        <div className='modal_active'>
+            <div
+                className='head'
+                onClick={(e: React.MouseEvent) => e.stopPropagation()}
+            >
+                <div className='category'>{selectedProduct.category}</div>
+                <button onClick={closeModal}>x</button>
+            </div>
+            <hr />
+            <div className='modal_block'>
+                <img src={selectedProduct.image} alt='' />
+                <div>
+                    <h1>{selectedProduct.title}</h1>
+                    <h2>{selectedProduct.price}$</h2>
+                    <div className='desc'>{selectedProduct.description}</div>
+                    <button>Купить</button>
                 </div>
             </div>
         </div>
