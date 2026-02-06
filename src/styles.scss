@@ -7,7 +7,77 @@ body{
   padding: 0;
   margin: 0;
   background: #212121;
+}
+.openWindowModal {
+  width: 80px;
+  height: 40px;
+  color: #a6a6a6;
+  font-size: 16px;
+  margin-top: 20px;
+  text-decoration: none;
+  border-radius: 15px;
+  background: none;
+}
 
+form {
+  width: 30%;
+  height: 600px;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:white;
+  z-index: 1;
+  border: 1px solid #939393;
+  border-radius: 25px;
+  box-shadow: 0 3px 8px 4px rgba(135, 127, 127, 0.2);
+  > div {
+    padding: 20px 0 0 20px;
+    > h1 {
+      color: #797979;
+    }
+    > h3 {
+      font-weight: 200;
+      color: #000000;
+    }
+    > input {
+      background: none;
+      border: 1px solid #c5c5c5;
+      outline: none;
+      width: 80%;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 7px;
+      box-shadow: inset 2px 5px 8px rgb(200, 200, 200);
+      color: #575757;
+    }
+    > textarea {
+      background: none;
+      border: 1px solid #c5c5c5;
+      outline: none;
+      width: 80%;
+      height: 100px;
+      padding: 10px 20px;
+      overflow: scroll;
+      font-size: 16px;
+      border-radius: 10px;
+      box-shadow: inset 2px 5px 8px rgb(200, 200, 200);
+      color: #575757;
+    }
+    > div > button {
+      width: 80px;
+      height: 40px;
+      color: #1800ff;
+      font-size: 16px;
+      margin-top: 50px;
+      text-decoration: none;
+      border-radius: 15px;
+      background: none;
+      border: 1.5px solid #c5c5c5;
+    }
+  }
 }
 
 header{

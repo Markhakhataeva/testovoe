@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
 
+import { AddCardWindow } from './AddCardWindow/AddCardWindow'
 import { Modal } from './Modal/Modal'
 
 export interface Product {
@@ -109,11 +110,14 @@ export const App: FC = () => {
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
     const [searchQuery, setSearchQuery] = useState<string>('')
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+    const [text, setText] = useState<string>('')
+    const [desc, setDesc] = useState<string>('')
+    const [isWindowOpen, setIsWindowOpen] = useState<boolean>(false)
 
     useEffect(() => {
         setProducts(Products)
         setFilteredProducts(Products)
-    }, [products])
+    }, [])
 
     useEffect(() => {
         const filtered = products.filter((product: Product) =>
@@ -130,10 +134,38 @@ export const App: FC = () => {
         return () => window.removeEventListener('keydown', handleEsc)
     }, [])
 
+    const handleAdd = (e: React.FormEvent) => {
+        e.preventDefault()
+        const newProduct = {
+            id: products.length + 1,
+            title: text,
+            price: Math.random() / 100000,
+            category: 'Гаджеты',
+            image: 'https://st.aestatic.net/items-img-13/R/C/I/5/4124fa58838183fed367590e1bd655aa.jpg_960x960.jpg',
+            description: desc,
+        }
+
+        setProducts(prev => [...prev, newProduct])
+
+        setText('')
+        setDesc('')
+        closeWindowModal()
+    }
+    console.log(products)
+
+    const openWindowModal = () => {
+        setIsWindowOpen(true)
+    }
+
+    const closeWindowModal = () => {
+        setIsWindowOpen(false)
+    }
+
     const openModal = (product: Product) => {
         setSelectedProduct(product)
         document.body.style.overflow = 'hidden'
     }
+
     const closeModal = () => {
         setSelectedProduct(null)
         document.body.style.overflow = 'unset'
@@ -155,6 +187,12 @@ export const App: FC = () => {
                             onChange={e => setSearchQuery(e.target.value)}
                         />
                     </div>
+                    <button
+                        className='openWindowModal'
+                        onClick={openWindowModal}
+                    >
+                        OPEN
+                    </button>
                 </div>
                 <span>
                     <hr className='line' />
@@ -199,6 +237,16 @@ export const App: FC = () => {
                         selectedProduct={selectedProduct}
                     />
                 )}
+            </aside>
+            <aside>
+                <AddCardWindow
+                    isWindowOpen={isWindowOpen}
+                    handleAdd={handleAdd}
+                    setText={setText}
+                    text={text}
+                    desc={desc}
+                    setDesc={setDesc}
+                />
             </aside>
         </div>
     )
