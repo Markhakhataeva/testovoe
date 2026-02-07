@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 
 import { AddCardWindow } from './AddCardWindow/AddCardWindow'
 import { Modal } from './Modal/Modal'
+import { Nothing } from './Nothing'
 
 export interface Product {
     id: number
@@ -248,6 +249,8 @@ export const App: FC = () => {
                     setDesc={setDesc}
                 />
             </aside>
+
+            <Nothing/>
         </div>
     )
 }
